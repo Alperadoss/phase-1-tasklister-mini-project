@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // your code here
   //shortenings for html elements
   const taskForm = document.getElementById("create-task-form");
   const taskDescInput = document.getElementById("new-task-description");
@@ -8,7 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let newTask = taskDescInput.innerText;
-    console.log(newTask);
+    let newTask = document.createElement("li");
+    newTask.innerText = taskDescInput.value;
+    console.log(newTask.innerText);
+
+    //add li to ul
+    const addTaskToUl = (task) => {
+      taskElement.appendChild(task);
+    };
+
+    addTaskToUl(newTask);
+
+    //clear input
+    event.target.reset();
   });
 });
